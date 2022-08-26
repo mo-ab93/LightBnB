@@ -9,9 +9,9 @@ $(() => {
 
       <div class="search-property-form__field-wrapper">
         <label for="search-property-form__minimum-price-per-night">Minimum Cost</label>
-        <input type="number" name="minimum_price_per_night" placeholder="Minimum Cost" id="search-property-form__minimum-price-per-night">
+        <input type="text" name="minimum_price_per_night" placeholder="Minimum Cost" id="search-property-form__minimum-price-per-night">
         <label for="search-property-form__maximum-price-per-night">Maximum Cost</label>
-        <input type="number" name="maximum_price_per_night" placeholder="Maximum Cost" id="search-property-form__maximum-price-per-night">
+        <input type="text" name="maximum_price_per_night" placeholder="Maximum Cost" id="search-property-form__maximum-price-per-night">
       </div>
 
       <div class="search-property-form__field-wrapper">
@@ -30,8 +30,9 @@ $(() => {
   $searchPropertyForm.on('submit', function(event) {
     event.preventDefault();
     const data = $(this).serialize();
-
+    console.log('hello');
     getAllListings(data).then(function( json ) {
+      console.log("V4",json)
       propertyListings.addProperties(json.properties);
       views_manager.show('listings');
     });
